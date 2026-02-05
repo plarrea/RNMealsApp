@@ -1,5 +1,6 @@
 import { useLayoutEffect } from 'react';
 import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
+import IconButton from '../components/IconButton';
 import List from '../components/MealDetail/List';
 import Subtitle from '../components/MealDetail/Subtitle';
 import MealDetails from '../components/MealDetails';
@@ -9,8 +10,15 @@ const MealDetailScreen = ({ route, navigation }) => {
   const { mealId, mealName } = route.params;
   const meal = MEALS.find((meal) => meal.id === mealId);
 
+  const headerButtonPressHandler = () => {};
+
   useLayoutEffect(() => {
-    navigation.setOptions({ title: mealName });
+    navigation.setOptions({
+      title: mealName,
+      headerRight: () => (
+        <IconButton icon="star" onPress={headerButtonPressHandler} />
+      ),
+    });
   }, [mealName, navigation]);
 
   return (
