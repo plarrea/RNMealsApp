@@ -17,7 +17,7 @@ const MealsOverviewScreen = ({ route, navigation }) => {
   }, [categoryName, navigation]);
 
   return (
-    <View>
+    <View style={styles.container}>
       <FlatList
         data={meals}
         keyExtractor={(item) => item.id}
@@ -30,5 +30,5 @@ const MealsOverviewScreen = ({ route, navigation }) => {
 export default MealsOverviewScreen;
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#24180f' },
+  container: { flex: 1 },
 });
