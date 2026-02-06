@@ -14,7 +14,7 @@ const MealDetailScreen = ({ route, navigation }) => {
 
   useLayoutEffect(() => {
     navigation.setOptions({
-      title: mealName,
+      // title: mealName,
       headerRight: () => (
         <IconButton icon="star" onPress={headerButtonPressHandler} />
       ),
