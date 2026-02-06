@@ -14,6 +14,7 @@ export default [
       'ios/**',
       'dist/**',
       'web-build/**',
+      'babel.config.js',
     ],
   },
 
