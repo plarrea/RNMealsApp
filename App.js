@@ -4,11 +4,13 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar, StyleSheet } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { Provider } from 'react-redux';
 import CategoriesScreens from './src/screens/CategoriesScreen';
 import FavoritesScreen from './src/screens/FavoritesScreen';
 import MealDetailScreen from './src/screens/MealDetailScreen';
 import MealsOverviewScreen from './src/screens/MealsOverviewScreen';
-import FavoritesProvider from './src/store/context/favorites-context';
+// import FavoritesProvider from './src/store/context/favorites-context';
+import { store } from './src/store/redux/store';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -54,7 +56,8 @@ export default function App() {
   return (
     <>
       <StatusBar style="light" />
-      <FavoritesProvider>
+      <Provider store={store}>
+        {/* <FavoritesProvider> */}
         <GestureHandlerRootView style={{ flex: 1 }}>
           <NavigationContainer>
             <Stack.Navigator
@@ -93,7 +96,8 @@ export default function App() {
             </Stack.Navigator>
           </NavigationContainer>
         </GestureHandlerRootView>
-      </FavoritesProvider>
+        {/* </FavoritesProvider> */}
+      </Provider>
     </>
   );
 }
