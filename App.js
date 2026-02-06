@@ -8,6 +8,7 @@ import CategoriesScreens from './src/screens/CategoriesScreen';
 import FavoritesScreen from './src/screens/FavoritesScreen';
 import MealDetailScreen from './src/screens/MealDetailScreen';
 import MealsOverviewScreen from './src/screens/MealsOverviewScreen';
+import FavoritesProvider from './src/store/context/favorites-context';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -53,44 +54,46 @@ export default function App() {
   return (
     <>
       <StatusBar style="light" />
-      <GestureHandlerRootView style={{ flex: 1 }}>
-        <NavigationContainer>
-          <Stack.Navigator
-            initialRouteName="Drawer"
-            screenOptions={{
-              headerTintColor: 'white',
-              headerStyle: { backgroundColor: '#351401' },
-              contentStyle: { backgroundColor: '#3f2f25' },
-              headerBackTitle: 'Back',
-            }}
-          >
-            <Stack.Screen
-              name="Drawer"
-              component={DrawerNavigator}
-              options={{
-                headerShown: false,
+      <FavoritesProvider>
+        <GestureHandlerRootView style={{ flex: 1 }}>
+          <NavigationContainer>
+            <Stack.Navigator
+              initialRouteName="Drawer"
+              screenOptions={{
+                headerTintColor: 'white',
+                headerStyle: { backgroundColor: '#351401' },
+                contentStyle: { backgroundColor: '#3f2f25' },
+                headerBackTitle: 'Back',
               }}
-            />
-            <Stack.Screen
-              name="MealsOverview"
-              component={MealsOverviewScreen}
-              // options={({ route, _ }) => {
-              //   const categoryName = route.params.categoryName;
-              //   return {
-              //     titile: categoryName,
-              //   };
-              // }}
-            />
-            <Stack.Screen
-              name="MealDetail"
-              component={MealDetailScreen}
-              options={{
-                title: 'About the Meal',
-              }}
-            />
-          </Stack.Navigator>
-        </NavigationContainer>
-      </GestureHandlerRootView>
+            >
+              <Stack.Screen
+                name="Drawer"
+                component={DrawerNavigator}
+                options={{
+                  headerShown: false,
+                }}
+              />
+              <Stack.Screen
+                name="MealsOverview"
+                component={MealsOverviewScreen}
+                // options={({ route, _ }) => {
+                //   const categoryName = route.params.categoryName;
+                //   return {
+                //     titile: categoryName,
+                //   };
+                // }}
+              />
+              <Stack.Screen
+                name="MealDetail"
+                component={MealDetailScreen}
+                options={{
+                  title: 'About the Meal',
+                }}
+              />
+            </Stack.Navigator>
+          </NavigationContainer>
+        </GestureHandlerRootView>
+      </FavoritesProvider>
     </>
   );
 }
